@@ -37,8 +37,15 @@ database.ref().on("child_added", function(snapshot) {
     var name = $("<td>").text(snapshot.val().name);
     var destination = $("<td>").text(snapshot.val().destination);
     var frequency = $("<td>").text(snapshot.val().frequency);
-    var nextArrival = $("<td>").text("N/A");
-    var minutesAway = $("<td>").text("N/A");
+    var firstTrain = snapshot.val().firstTrain;
+    var firstTrainConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
+    var diffTime = moment().diff(moment(firstTrainConverted), "minutes");
+    var trainFrequency = snapshot.val().frequency;
+    var remainingTime = diffTime % trainFrequency;
+    var minutesTillTrain = trainFrequency - remainingTime;
+    var nextTrain = moment().add(minutesTillTrain, "minutes");
+    var nextArrival = $("<td>").text(moment(nextTrain).format("hh:mm"));
+    var minutesAway = $("<td>").text(minutesTillTrain);
     newTR.append(name, destination, frequency, nextArrival, minutesAway);
     $("tbody").append(newTR);
 });
