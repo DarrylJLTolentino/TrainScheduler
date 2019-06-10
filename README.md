@@ -9,3 +9,28 @@ This website features a train schedule which keeps track of train names, their d
 
 ######
 
+| Technology Used | Reference |
+| --------------- | --------- |
+| HTML | https://developer.mozilla.org/en-US/docs/Web/HTML |
+| CSS | https://developer.mozilla.org/en-US/docs/Web/CSS |
+| Bootstrap | https://getbootstrap.com/ |
+| JavaScript | https://www.javascript.com/ |
+| jQuery | https://jquery.com/ |
+| Firebase | https://firebase.google.com/ |
+| MomentJs | http://momentjs.com/ |
+
+######
+
+| Versioning | Reference |
+| ---------- | --------- |
+| Github | https://github.com/ |
+
+######
+
+## Author
+- Darryl Tolentino
+
+## Acknowledgements
+- Jake Dudum: For helping me fix syntax
+
+
