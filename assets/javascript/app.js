@@ -11,8 +11,11 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
+var video = $("#video");
+video[0].load();
 
 $("#submit").on("click", function () {
+    video[0].play();
     var trainName = $("#train-name").val().trim();
     var destinationName = $("#destination-name").val().trim();
     var firstTrain = $("#first-train").val().trim();
@@ -30,9 +33,10 @@ $("#submit").on("click", function () {
     $("#destination-name").val("");
     $("#first-train").val("");
     $("#frequency-input").val("");
+
 });
 
-database.ref().on("child_added", function(snapshot) {
+database.ref().on("child_added", function (snapshot) {
     var newTR = $("<tr>");
     var name = $("<td>").text(snapshot.val().name);
     var destination = $("<td>").text(snapshot.val().destination);
