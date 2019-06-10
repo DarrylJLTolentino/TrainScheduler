@@ -31,3 +31,14 @@ $("#submit").on("click", function () {
     $("#first-train").val("");
     $("#frequency-input").val("");
 });
+
+database.ref().on("child_added", function(snapshot) {
+    var newTR = $("<tr>");
+    var name = $("<td>").text(snapshot.val().name);
+    var destination = $("<td>").text(snapshot.val().destination);
+    var frequency = $("<td>").text(snapshot.val().frequency);
+    var nextArrival = $("<td>").text("N/A");
+    var minutesAway = $("<td>").text("N/A");
+    newTR.append(name, destination, frequency, nextArrival, minutesAway);
+    $("tbody").append(newTR);
+});
