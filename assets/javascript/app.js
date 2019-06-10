@@ -11,3 +11,23 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
+
+$("#submit").on("click", function () {
+    var trainName = $("#train-name").val().trim();
+    var destinationName = $("#destination-name").val().trim();
+    var firstTrain = $("#first-train").val().trim();
+    var frequencyInput = $("#frequency-input").val().trim();
+
+    var newTrain = {
+        name: trainName,
+        destination: destinationName,
+        firstTrain: firstTrain,
+        frequency: frequencyInput
+    };
+
+    database.ref().push(newTrain);
+    $("#train-name").val("");
+    $("#destination-name").val("");
+    $("#first-train").val("");
+    $("#frequency-input").val("");
+});
